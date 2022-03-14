@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/room_type.gd" type="Script" id=1]
+[ext_resource path="res://Assets/TopBottom.tres" type="TileSet" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 33.7021, 26.5183 )
+
+[node name="End" type="Node2D"]
+script = ExtResource( 1 )
+_is_end = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 4
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 65536, 1, 0, 65543, 1, 0, 131072, 1, 0, 131079, 1, 0, 327680, 1, 0, 327687, 1, 0, 393216, 1, 0, 393223, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0 )
+
+[node name="Variants" type="Node2D" parent="."]
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="End" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+position = Vector2( 123.806, 119.802 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="End" to="." method="_on_End_body_entered"]
